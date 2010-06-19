@@ -21,7 +21,7 @@ class BookmarkHelper extends Helper{
 	 * change this defaults if you want to use a different set of bookmarklets
 	 * The array elements should correspond to $bookmarks keys
 	 */
-	var $defaults = array('yahoo', 'google', 'windows', 'facebook', 'digg', 'technorati', 'delicious', 'stumble', 'slashdot');
+	var $defaults = array('yahoo', 'google', 'windows', 'facebook', 'digg', 'technorati', 'delicious', 'stumble', 'slashdot', 'twitter');
 	
 	/**
 	 * @param $pagetitle - (required) Title of the Page
@@ -51,9 +51,9 @@ class BookmarkHelper extends Helper{
 			
 			$name = $this->bookmarks[$site]['name'];
 			$image = $this->Html->image($this->imgFolder . $this->bookmarks[$site]['icon'], array('title'=> "{$name}", 'alt'=>"{$name}", 'border'=> "0"));
-			$output .= $this->Html->link($image, $link, array('escape'=> false)). ' ';
+			$output .= '<li>'.$this->Html->link($image, $link, array('escape'=> false, 'target' => '_blank')). '</li>';
 		}
-		return '<div id="bookmarklets">' . $output . '</div>';
+		return '<ul id="bookmarklets">' . $output . '</ul>';
 	}
 	
 	/**
@@ -178,7 +178,12 @@ class BookmarkHelper extends Helper{
 				'name' => 'Rawsugar',
 				'link' => 'http://www.rawsugar.com/tagger/?turl={url}&tttl={title}&editorInitialized=1',
 				'icon' => 'rawsugar.gif'
-				)
+				),
+		'twitter' => array(
+		        'name' => 'Twitter',
+		        'link' => 'http://twitter.com/home?status=@popnews {title} {url}',
+		        'icon' => 'twitter.png'
+		        )
 	);
 }
 ?>
