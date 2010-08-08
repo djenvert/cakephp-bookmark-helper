@@ -51,7 +51,7 @@ class BookmarkHelper extends Helper{
 			
 			$name = $this->bookmarks[$site]['name'];
 			$image = $this->Html->image($this->imgFolder . $this->bookmarks[$site]['icon'], array('title'=> "{$name}", 'alt'=>"{$name}", 'border'=> "0"));
-			$output .= '<li>'.$this->Html->link($image, $link, array('escape'=> false, 'target' => '_blank')). '</li>';
+			$output .= '<li>'.$this->Html->link($image, $link, array('escape'=> false, 'target' => '_blank', 'rel' => 'nofollow')). '</li>';
 		}
 		return '<ul id="bookmarklets">' . $output . '</ul>';
 	}
