@@ -38,11 +38,12 @@ class BookmarkHelper extends Helper{
 			$sites = $this->defaults;
 		}
 		
-		$output = "";
+		$output = ""; 
 		foreach($sites as $site){
 			if(!array_key_exists($site, $this->bookmarks)) 
 				continue;
-				
+			if($site == 'gplus') 
+				continue;	
 			//build url
 			$link = $this->bookmarks[$site]['link'];
 			$link = str_replace('{url}', $url, $link);
@@ -53,6 +54,12 @@ class BookmarkHelper extends Helper{
 			$image = $this->Html->image($this->imgFolder . $this->bookmarks[$site]['icon'], array('title'=> "{$name}", 'alt'=>"{$name}", 'border'=> "0"));
 			$output .= '<li>'.$this->Html->link($image, $link, array('escape'=> false, 'target' => '_blank', 'rel' => 'nofollow')). '</li>';
 		}
+        if (in_array('gplus', $sites)) {
+		   $output .= '<li>'.'<g:plusone size="small" href="'.$link.'"></g:plusone>'.'</li>';  
+        }
+		
+		
+		
 		return '<ul id="bookmarklets">' . $output . '</ul>';
 	}
 	
