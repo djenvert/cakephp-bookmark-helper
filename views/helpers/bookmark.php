@@ -188,7 +188,7 @@ class BookmarkHelper extends Helper{
 				),
 		'twitter' => array(
 		        'name' => 'Twitter',
-		        'link' => 'http://twitter.com/home?status=@popnews {title} {url}',
+		        'link' => 'http://twitter.com/home?status={title} {url} @popnews',
 		        'icon' => 'twitter.png'
 		        )
 	);
